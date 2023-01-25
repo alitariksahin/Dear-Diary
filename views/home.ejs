@@ -1,0 +1,44 @@
+<%- include("partials/header"); -%>
+<h1 class="text-center">Dear Diary,</h1>
+<figure>
+    <q> The life of every man is a diary in which he means to write one story, and writes another; and his humblest hour is when he compares the volume as it is with what he vowed to make it. </q>
+    <figcaption>— James M. Barrie</figcaption>
+</figure>
+
+
+<div class= "container">
+  <div class="row">
+    <div class="col-3">
+      <figure>
+    <div class="post">
+      <% posts.forEach(function(post) { %>
+        <h2> <em><%= post.title %> </em> </h2>
+      <% if (post.text.length > 165) { %>
+          <p> <%= post.text.slice(0, 165) + " ..." %> <a href="/posts/<%= post._id %>"> Read More </a> </p>
+
+      <% } else { %>
+        <p> <%= post.text %> </p>
+      <% } %>
+
+
+
+
+      <% }); %>
+        </div>
+
+    </figure>
+    <div class="parent">
+      <form action="/compose" method="get">
+        <button type="submit" class="round-6">&#9998;</button>
+      </form>
+
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<%- include("partials/footer"); -%>
