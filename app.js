@@ -70,7 +70,4 @@ app.post("/compose", async function(req, res) {
 
 app.listen(process.env.PORT || 3000, function() {
   console.log(`Server started on port ${process.env.PORT}`);
-  setInterval(() => {
-    axios.get("https://article-api-ats.onrender.com");
-  }, 6000)
 });
