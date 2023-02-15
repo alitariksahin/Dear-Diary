@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const axios = require("axios");
 
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URI);
@@ -68,5 +69,8 @@ app.post("/compose", async function(req, res) {
 });
 
 app.listen(process.env.PORT || 3000, function() {
-  console.log("Server started on port ${process.env.PORT}");
+  console.log(`Server started on port ${process.env.PORT}`);
+  setInterval(() => {
+    axios.get("https://article-api-ats.onrender.com");
+  }, 6000)
 });
